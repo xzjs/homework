@@ -16,7 +16,7 @@
 
           <el-col class="middle">
             <div class="grid-content bg-purple-light">
-              <el-image :src="images[index]" fit="contain"></el-image>
+              <el-image class="preview_img" :src="images[index]" fit="fill"></el-image>
             </div>
           </el-col>
 
@@ -134,6 +134,13 @@ export default {
       width: 15.7rem;
       height: 8.82rem;
       background-color: #e5e5e5;
+
+      .grid-content {
+        height: 100%;
+        .preview_img {
+          height: 100%;
+        }
+      }
     }
 
     .left {
