@@ -63,7 +63,7 @@
             <div class="itemAnswer">
               <el-row class="firstTopic">
                 <el-col :span="6">
-                  <h3>第 {{item.no}} 题 {{item.title}}</h3>
+                  <h3>第 {{n+1}} 题 {{item.title}}</h3>
                 </el-col>
                 <el-col :span="1" :offset="17">
                   <img src="../../assets/img/edit2.png" alt="" @click="editTopic(item)">
@@ -84,7 +84,7 @@
                   </el-col>
                   <el-col :span="2" style="float: right" class="">
                     <div class="score">
-                      <input type="text" :value="i.value">
+                      <input type="text" :value="i.num">
                     </div>
                   </el-col>
                 </el-row>
@@ -276,33 +276,6 @@
       },
       submitModal() {
         this.editFormVisible = false;
-        for (let i = 0; i < this.form.num; i++) {
-          switch (this.item.title) {
-            case '选择题':
-              let answer = [];
-              for (let j = 0; j < this.form.selectNum; j++) {
-                answer.push(String.fromCharCode(j + 65) + " ")
-              }
-              this.item.children.push({
-                answer: answer,
-                value: this.form.value
-              });
-              break;
-            case '判断题':
-              this.item.children.push({
-                answer: ['√', 'x'],
-                value: this.form.value,
-              });
-              break;
-            case '填空题':
-            case "简答题":
-              this.item.children.push({
-                answer: [],
-                value: this.form.value,
-              });
-              break;
-          }
-        }
       },
       // 发送作业
       getSend() {
